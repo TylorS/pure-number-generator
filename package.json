@@ -24,9 +24,10 @@
     "commitmsg": "validate-commit-msg",
     "release:major": "npm version major -m 'chore(package): v%s'",
     "release:minor": "npm version minor -m 'chore(package): v%s'",
+    "fix-ts": "eslint --fix './src/*.ts'",
     "test": "npm run test:lint && npm run test:unit",
-    "test:lint": "tslint --project tsconfig.json --type-check",
-    "test:unit": "./node_modules/.bin/test -r ts-node/register 'src/**/*.test.ts'",
+    "test:lint": "eslint './src/*.ts",
+    "test:unit": "typed-test 'src/**/*.__test__.ts'",
     "preversion": "npm run test && npm run build",
     "postversion": "npm run changelog && git push origin master --tags && npm publish"
   },
@@ -34,10 +35,7 @@
     "167": "^0.43.0"
   },
   "devDependencies": {
-    "@briancavalier/assert": "^3.4.0",
-    "@motorcycle/tslint": "^3.1.0",
     "@typed/test": "^9.5.0",
-    "@types/node": "^7.0.22",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
     "commitizen": "^4.2.1",
@@ -50,9 +48,12 @@
     "husky": "^4.3.0",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
-    "ts-node": "^9.0.0",
-    "tslint": "^5.3.2",
     "typescript": "^4.0.3",
     "validate-commit-message": "^3.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run fix-ts && npm run test:unit"
+    }
   }
 }
