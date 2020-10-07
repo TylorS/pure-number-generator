@@ -53,7 +53,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run fix-ts && npm run test:unit"
+      "pre-commit": "npm run fix-ts && npm run test:unit",
+      "pre-push": "npm run test"
     }
   }
 }
