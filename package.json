@@ -26,7 +26,7 @@
     "release:minor": "npm version minor -m 'chore(package): v%s'",
     "fix-ts": "eslint --fix './src/*.ts'",
     "test": "npm run test:lint && npm run test:unit",
-    "test:lint": "eslint './src/*.ts",
+    "test:lint": "eslint './src/*.ts'",
     "test:unit": "typed-test 'src/**/*.__test__.ts'",
     "preversion": "npm run test && npm run build",
     "postversion": "npm run changelog && git push origin master --tags && npm publish"
